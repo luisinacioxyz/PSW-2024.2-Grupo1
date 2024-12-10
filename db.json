@@ -4,23 +4,23 @@
         "id": 1,
         "table": "5",
         "items": [
-          { "name": "Margherita Pizza","category": "Main Course", "price": 14.99,"quantity": 2 },
-          { "name": "Caesar Salad","category": "Starters", "price": 8.99,"quantity": 1 }
+          { "name": "Filé Mignon ao Molho Madeira","category": "Prato principal", "price": 40,"quantity": 2 },
+          { "name": "Porção de pastéis","category": "Entrada", "price": 40,"quantity": 1 }
         ],
         "time": "14:30",
-        "observation": "Extra cheese on pizza",
+        "observation": "6 pasteis de queijo",
         "requestTime": "2024-11-19T14:30:00"
       },
       {
         "id": 2,
         "table": "3",
         "items": [
-          { "name": "Beef Burger","category": "Main Course", "price": 12.99,"quantity": 1 },
-          { "name": "French Fries","category": "Starters", "price": 7.99,"quantity": 2 },
-          { "name": "Coke","category": "Beverages", "price": 5.99,"quantity": 2 }
+          { "name": "Risoto de Camarão","category": "Prato principal", "price": 45,"quantity": 1 },
+          { "name": "Porção de Aipim","category": "Entrada", "price": 25,"quantity": 2 },
+          { "name": "Coca cola","category": "Bebidas", "price": 7,"quantity": 2 }
         ],
         "time": "14:35",
-        "observation": "No onions in burger",
+        "observation": "Limão na coca",
         "requestTime": "2024-11-19T14:35:00"
       }
     ],
