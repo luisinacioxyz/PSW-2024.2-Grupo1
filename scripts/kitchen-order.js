@@ -58,28 +58,29 @@
         }
 
         function removeOrder(orderId) {
+            // Convert orderId to a string to avoid type mismatches
+            const stringOrderId = String(orderId);
+        
             // Get the order before removing it to know which table it belongs to
-            const orderToRemove = orders.find(order => order.id === orderId);
-            
-            // Remove from orders
-            orders = orders.filter(order => order.id !== orderId);
-            localStorage.setItem('ordersData', JSON.stringify(orders));
-            
-            // Update active tables - remove the table if it has no more orders
+            const orderToRemove = orders.find(order => String(order.id) === stringOrderId);
+        
             if (orderToRemove) {
-                const activeTablesData = JSON.parse(localStorage.getItem('activeTablesData')) || [];
-                const hasMoreOrders = orders.some(order => order.table === orderToRemove.table);
-                
-                if (!hasMoreOrders) {
-                    const updatedActiveTables = activeTablesData.filter(table => 
-                        table.number.toString() !== orderToRemove.table.toString()
-                    );
-                    localStorage.setItem('activeTablesData', JSON.stringify(updatedActiveTables));
-                }
+                console.log(`Removing order:`, orderToRemove);
+            } else {
+                console.log(`Order with ID ${stringOrderId} not found.`);
             }
-            
+        
+            // Remove the order from the orders array
+            orders = orders.filter(order => String(order.id) !== stringOrderId);
+            console.log(`Updated orders:`, orders);
+        
+            // Save the updated orders back to localStorage
+            localStorage.setItem('ordersData', JSON.stringify(orders));
+        
+            // Update the display to reflect the changes
             updateDisplay();
         }
+        
 
         function updateDisplay() {
             const container = document.getElementById('orders-container');
