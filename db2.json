@@ -1,0 +1,9 @@
+{
+    "beers": [
+      { "id": 1, "name": "Heineken Long Neck", "price": 15.00, "image": "../fotos/heineken.jpg" },
+      { "id": 2, "name": "Budweiser Long Neck", "price": 12.00, "image": "../fotos/budweiser.jpg" },
+      { "id": 3, "name": "Brahma Latão 473ml", "price": 10.00, "image": "../fotos/Brahma.jpg" }
+    ],
+    "cart": []
+  }
+  

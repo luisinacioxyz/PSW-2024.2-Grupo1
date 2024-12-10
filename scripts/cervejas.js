@@ -1,9 +1,3 @@
-const beers = [
-    { id: 1, name: "Heineken Long Neck", price: 15.00, image: "../fotos/heineken.jpg" },
-    { id: 2, name: "Budweiser Long Neck", price: 12.00, image: "../fotos/budweiser.jpg" },
-    { id: 3, name: "Brahma Latão 473ml", price: 10.00, image: "../fotos/Brahma.jpg" },
-];
-
 let cartCount = 0;
 
 function updateCartCounter() {
@@ -36,7 +30,7 @@ function createBeerCard(beer) {
     incrementButton.addEventListener("click", () => {
         const currentQuantity = parseInt(quantity.textContent, 10) || 0;
         quantity.textContent = currentQuantity + 1;
-        updateTotalPrice(beerCard, beer.price, quantity.textContent); // Atualiza o total quando a quantidade mudar
+        updateTotalPrice(beerCard, beer.price, quantity.textContent);
     });
 
     const decrementButton = document.createElement("button");
@@ -45,7 +39,7 @@ function createBeerCard(beer) {
         const currentQuantity = parseInt(quantity.textContent, 10) || 0;
         if (currentQuantity > 0) {
             quantity.textContent = currentQuantity - 1;
-            updateTotalPrice(beerCard, beer.price, quantity.textContent); // Atualiza o total quando a quantidade mudar
+            updateTotalPrice(beerCard, beer.price, quantity.textContent);
         }
     });
 
@@ -55,8 +49,7 @@ function createBeerCard(beer) {
     addToCartButton.addEventListener("click", () => {
         const currentQuantity = parseInt(quantity.textContent, 10) || 0;
         if (currentQuantity > 0) {
-            cartCount += currentQuantity;
-            updateCartCounter();
+            addToCart(beer, currentQuantity);
         } else {
             alert("Por favor, selecione a quantidade!");
         }
@@ -76,12 +69,51 @@ function updateTotalPrice(beerCard, price, quantity) {
     beerCard.querySelector(".beer-total").textContent = total.toFixed(2);
 }
 
-function displayBeers() {
-    const beerListContainer = document.getElementById("beer-list");
-    beers.forEach(beer => {
-        const beerCard = createBeerCard(beer);
-        beerListContainer.appendChild(beerCard);
-    });
+function fetchBeers() {
+    fetch("http://localhost:3000/beers")
+        .then(response => response.json())
+        .then(data => {
+            const beerListContainer = document.getElementById("beer-list");
+            data.forEach(beer => {
+                const beerCard = createBeerCard(beer);
+                beerListContainer.appendChild(beerCard);
+            });
+        })
+        .catch(error => console.error("Erro ao carregar as cervejas:", error));
 }
 
-displayBeers();
+function addToCart(beer, quantity) {
+    fetch("http://localhost:3000/cart", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            id: beer.id,
+            name: beer.name,
+            price: beer.price,
+            quantity: quantity
+        })
+    })
+    .then(() => {
+        cartCount += quantity;
+        updateCartCounter();
+        alert("Item adicionado ao carrinho!");
+    })
+    .catch(error => console.error("Erro ao adicionar ao carrinho:", error));
+}
+
+function loadCart() {
+    fetch("http://localhost:3000/cart")
+        .then(response => response.json())
+        .then(cartItems => {
+            const cartSummary = document.getElementById("cart-summary");
+            cartSummary.innerHTML = cartItems.map(item => `
+                <p>${item.quantity}x ${item.name} - R$ ${(item.price * item.quantity).toFixed(2)}</p>
+            `).join("");
+        })
+        .catch(error => console.error("Erro ao carregar o carrinho:", error));
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    fetchBeers();
+    updateCartCounter();
+});
