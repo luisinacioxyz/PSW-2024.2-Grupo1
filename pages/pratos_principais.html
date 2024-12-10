@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prato Principal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/pratos_principais.css">
+</head>
+<body>
+    <div class="container py-4">
+        <!-- Header -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="h5 text-center mb-0">Pratos Principais</h1>
+            <div class="nav-icons">
+                <a href="categoria.html"><i class="fas fa-arrow-left me-3"></i></a>
+                <a href="categoria.html"><i class="fas fa-home me-3"></i></a>
+                
+            </div>
+        </div>
+
+        <div class="text-center mb-4">
+            <h5 class="text-muted">Escolha o seu prato Principal</h5>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card shadow border-0">
+                    <img src="../fotos/carne.jpg" class="card-img-top" alt="Filé Mignon ao Molho Madeira">
+                    <div class="card-body">
+                        <h5 class="card-title">Filé Mignon ao Molho Madeira</h5>
+                        <p class="card-text">Um suculento filé mignon grelhado, servido com um molho madeira feito com vinho tinto, cogumelos e especiarias. Acompanha arroz e batatas douradas.</p>
+                        <p class="card-text text-end"><strong>Preço: R$ <span id="file-price">50</span></strong></p>
+                        <div class="d-flex justify-content-between align-items-center mt-2">
+                            <button class="btn btn-outline-secondary" onclick="changeQuantity('file', -1, 50)">-</button>
+                            <input type="number" id="file-quantity" class="form-control text-center" min="1" value="1" readonly style="width: 60px;">
+                            <button class="btn btn-outline-secondary" onclick="changeQuantity('file', 1, 50)">+</button>
+                        </div>
+                        <button class="btn btn-primary w-100 mt-3" onclick="addToCart('file')">Adicionar ao Carrinho</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow border-0">
+                    <img src="../fotos/frango.jpg" class="card-img-top" alt="Frango à Parmegiana">
+                    <div class="card-body">
+                        <h5 class="card-title">Salada caesar</h5>
+                        <p class="card-text">Peito de frango grelhado, temperado com ervas finas e um toque de limão, acompanhado de uma salada fresca com mix de folhas verdes, tomate-cereja, pepino, cenoura ralada e um leve molho de vinagrete. Uma opção leve e saudável para quem busca uma refeição nutritiva e saborosa.</p>
+                        <p class="card-text text-end"><strong>Preço: R$ <span id="Frango-price">40</span></strong></p>
+                        <div class="d-flex justify-content-between align-items-center mt-2">
+                            <button class="btn btn-outline-secondary" onclick="changeQuantity('Frango', -1, 40)">-</button>
+                            <input type="number" id="Frango-quantity" class="form-control text-center" min="1" value="1" readonly style="width: 60px;">
+                            <button class="btn btn-outline-secondary" onclick="changeQuantity('Frango', 1, 40)">+</button>
+                        </div>
+                        <button class="btn btn-primary w-100 mt-3" onclick="addToCart('Frango')">Adicionar ao Carrinho</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Risoto de Camarão -->
+            <div class="col-md-4">
+                <div class="card shadow border-0">
+                    <img src="../fotos/risoto.jpg" class="card-img-top" alt="Risoto de Camarão">
+                    <div class="card-body">
+                        <h5 class="card-title">Risoto de Camarão</h5>
+                        <p class="card-text">Um risoto cremoso de arroz arbóreo, preparado com caldo de camarão e finalizado com camarões salteados e um toque de salsinha, como rúcula ou espinafre, para um sabor leve e sofisticado. Uma refeição que combina o sabor do mar com a frescura das folhas.</p>
+                        <p class="card-text text-end"><strong>Preço: R$ <span id="Risoto-price">45,00</span></strong></p>
+                        <div class="d-flex justify-content-between align-items-center mt-2">
+                            <button class="btn btn-outline-secondary" onclick="changeQuantity('Risoto', -1, 45)">-</button>
+                            <input type="number" id="Risoto-quantity" class="form-control text-center" min="1" value="1" readonly style="width: 60px;">
+                            <button class="btn btn-outline-secondary" onclick="changeQuantity('Risoto', 1, 45)">+</button>
+                        </div>
+                        <button class="btn btn-primary w-100 mt-3" onclick="addToCart('Risoto')">Adicionar ao Carrinho</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Salmão Grelhado -->
+            <div class="col-md-4">
+                <div class="card shadow border-0">
+                    <img src="../fotos/salmao.jpg" class="card-img-top" alt="Salmão Grelhado com Purê de Batata Doce">
+                    <div class="card-body">
+                        <h5 class="card-title">Salmão Grelhado com Purê de Batata Doce</h5>
+                        <p class="card-text">Filé de salmão grelhado, servido com um macarrão al dente envolto em um molho leve de limão, azeite e ervas frescas. Uma combinação deliciosa e nutritiva, perfeita para quem busca um prato equilibrado e saboroso.</p>
+                        <p class="card-text text-end"><strong>Preço: R$ <span id="Salmão-price">60,00</span></strong></p>
+                        <div class="d-flex justify-content-between align-items-center mt-2">
+                            <button class="btn btn-outline-secondary" onclick="changeQuantity('Salmão', -1, 60)">-</button>
+                            <input type="number" id="Salmão-quantity" class="form-control text-center" min="1" value="1" readonly style="width: 60px;">
+                            <button class="btn btn-outline-secondary" onclick="changeQuantity('Salmão', 1, 60)">+</button>
+                        </div>
+                        <button class="btn btn-primary w-100 mt-3" onclick="addToCart('Salmão')">Adicionar ao Carrinho</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../scripts/pratos_principais.js"></script>
+</body>
+</html>

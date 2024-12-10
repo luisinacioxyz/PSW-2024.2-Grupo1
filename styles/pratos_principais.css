@@ -1,0 +1,20 @@
+/* Adicione estilos personalizados aqui */
+.card {
+    border-radius: 10px;
+}
+.card img {
+    border-radius: 10px 10px 0 0;
+}
+.btn-outline-secondary {
+    border-color: #ced4da;
+}
+.btn-outline-secondary:hover {
+    background-color: #f8f9fa;
+}
+.nav-icons a {
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: #28a745;
+    margin-left: 10px;
+    position: relative;
+}

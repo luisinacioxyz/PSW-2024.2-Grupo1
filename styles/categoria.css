@@ -1,0 +1,48 @@
+/* Reset de margens e preenchimento para todos os elementos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo das imagens nos itens do menu */
+.menu-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Estilo do item do menu */
+.menu-item {
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efeito de hover no item do menu */
+.menu-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Título do menu */
+.menu-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    margin-top: 0.5rem;
+}
+
+/* Estilo dos ícones de navegação */
+.nav-icons a {
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: #28a745;
+    margin-left: 10px;
+    position: relative;
+}
+
+/* Efeito de hover nos ícones de navegação */
+.nav-icons a:hover {
+    color: #1e7e34; /* Cor ao passar o mouse */
+}
